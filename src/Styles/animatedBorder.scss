@@ -2,8 +2,8 @@
 
 .animated-border-ctr{
   position: absolute;
-  left: 50%;
   top: 40px;
+  left: 50%;
   transform: translateX(-50%);
   transition: all 0.5s;
   display: flex;
@@ -17,6 +17,7 @@
     transition: all 0.5s;
   }
   &.animate{
+    left: calc(50% - 22.5px);
     top: 0px;
     animation: 4.5s none 0s 21 animateBorder;
     height: 45px;
