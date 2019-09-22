@@ -1,0 +1,85 @@
+{
+  "name": "lens-react",
+  "version": "1.0.0",
+  "description": "A descriptive interactive react search plugin demo.",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "webpack-dev-server --env.NODE_ENV=development --env.PROCESS=serve --mode development --open",
+    "start:prod": "webpack-dev-server --env.NODE_ENV=production  --env.PROCESS=serve --mode production --open",
+    "build:dev": "webpack --env.NODE_ENV=development --env.PROCESS=build --mode development",
+    "build:prod": "webpack --env.NODE_ENV=production --env.PROCESS=build --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlphaH7/lens-react.git"
+  },
+  "keywords": [
+    "React",
+    "React-lens",
+    "lens",
+    "lens-react"
+  ],
+  "author": "Alistier X.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlphaH7/lens-react/issues"
+  },
+  "homepage": "https://github.com/AlphaH7/lens-react",
+  "dependencies": {
+    "async": "^3.1.0",
+    "clean-webpack-plugin": "^1.0.1",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.2.0",
+    "moment": "^2.24.0",
+    "prettier": "^1.18.2",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^0.4.0",
+    "underscore": "^1.9.1",
+    "webpack-s3-plugin": "^1.0.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-do-expressions": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.0.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "base-href-webpack-plugin": "^2.0.0",
+    "css-loader": "^1.0.1",
+    "file-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  }
+}

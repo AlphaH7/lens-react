@@ -1,0 +1,121 @@
+// Search styles
+
+.lens-ctr{
+  position: relative;
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  &.animate{
+    input,svg.search-icon{
+      opacity: 0
+    }
+  }
+  input.lens-input{
+    transition: all 0.5s;
+    transition-delay: 0.3s !important;
+    padding: 10px 20px;
+    border: 0px;
+    font-size: 17px;
+    background-color: transparent;
+    color: #fff;
+    outline: none !important;
+    width: 330px;
+    text-decoration: none;
+    &::placeholder{
+      color: #fff;
+      font-weight: 500;
+      font-size: 17px;
+    }
+  }
+  .no-result-ctr{
+    .result-node{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .embaressed-icon{
+      height: 70px;
+      width: 70px;
+      margin-top: 30px;
+      fill: #fff;
+    }
+    p{
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+  .result-ctr{
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 100%;
+    max-height: calc(50vh - 100px);
+    position: absolute;
+    top: 50px;
+    animation: 1s none 0s 1 animateResultView;
+    transform-origin: top;
+    overflow-y: auto;
+    width: calc(100% - 25px);
+    left: 19px;
+    .result-node{
+      background-color: rgba(255,255,255,0.1);
+      animation: 1s none 0s 1 animateNodeView;
+      cursor: pointer;
+      color: #fff;
+      padding: 20px 10px;
+      font-weight: 500;
+      border-bottom: 1px solid #fff;
+      transition: all 0.25s;
+      &.hovered{
+        background-color: rgba(255,255,255,0.4);
+      }
+      &:last-child{
+        border: 0px;
+      }
+      .items-subline{
+        display: inline-block;
+        margin-left: 5px;
+      }
+      span{
+        color: #e96c7b;
+      }
+    }
+  }
+  svg.search-icon{
+    transition: all 0.5s;
+    transition-delay: 0.5s;
+    position: absolute;
+    fill: #fff;
+    height: 25px;
+    width: 25px;
+    right: 5px;
+    top: 7px;
+  }
+}
+
+@keyframes animateNodeView {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animateResultView {
+  0% {
+    opacity: 0;
+    transform: scale3d(0,0,0);
+  }
+  50% {
+    transform: scale3d(1,0,1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+  }
+}

@@ -1,0 +1,20 @@
+#build
+dist
+build
+
+#npm modules
+node_modules
+
+#aws credentials
+aws-credentials-dev.json
+aws-credentials-prod.json
+
+#Mac os
+.DS_Store
+
+#IDE
+.idea/*
+
+dump.rdb
+package-lock.json
+yarn.lock

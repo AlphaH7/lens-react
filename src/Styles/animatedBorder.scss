@@ -1,0 +1,64 @@
+//Animated Border Styles
+
+.animated-border-ctr{
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  height: 2px;
+  width: 332px;
+  div{
+    width: 83px;
+    background: #fff;
+    height: 2px;
+    transition: all 0.5s;
+  }
+  &.animate{
+    top: 0px;
+    animation: 4.5s none 0s 21 animateBorder;
+    height: 45px;
+    width: 45px;
+    div{
+      // transform: scale3d(0.1, 4.5, 1) translate(-368px, 1px);
+      // transform: translate(-368px, 1px);
+      height: 15px;
+      width: 15px;
+      border-radius: 30%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      &:nth-child(2n){
+        left: 30px;
+      }
+      &:nth-child(3n){
+        top: 30px;
+        left: 30px;
+      }
+      &:nth-child(4n){
+        top: 30px;
+        left: 0px;
+      }
+    }
+  }
+}
+
+@keyframes animateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(90deg);
+  }
+  40% {
+    transform: rotate(180deg);
+  }
+  80% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
