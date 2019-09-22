@@ -1,6 +1,6 @@
 //Animated Border Styles
 
-.animated-border-ctr{
+.animated-border-ctr {
   position: absolute;
   top: 40px;
   left: 50%;
@@ -10,19 +10,19 @@
   align-items: center;
   height: 2px;
   width: 332px;
-  div{
+  div {
     width: 83px;
     background: #fff;
     height: 2px;
     transition: all 0.5s;
   }
-  &.animate{
+  &.animate {
     left: calc(50% - 22.5px);
     top: 0px;
     animation: 4.5s none 0s 21 animateBorder;
     height: 45px;
     width: 45px;
-    div{
+    div {
       // transform: scale3d(0.1, 4.5, 1) translate(-368px, 1px);
       // transform: translate(-368px, 1px);
       height: 15px;
@@ -31,14 +31,14 @@
       position: absolute;
       top: 0px;
       left: 0px;
-      &:nth-child(2n){
+      &:nth-child(2n) {
         left: 30px;
       }
-      &:nth-child(3n){
+      &:nth-child(3n) {
         top: 30px;
         left: 30px;
       }
-      &:nth-child(4n){
+      &:nth-child(4n) {
         top: 30px;
         left: 0px;
       }
