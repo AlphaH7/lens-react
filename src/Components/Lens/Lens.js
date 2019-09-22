@@ -88,6 +88,8 @@ export default class Lens extends Component {
       ) {
         this.setState({ hoveredIndex: this.state.hoveredIndex + 1 }, () => {
           if (this.state.hoveredIndex >= 0)
+            // Scrolling has been implemented using Refs and scrollIntoView 
+            // javascript nethod, NO LIBRARY OR jQuesry used.
             this[`resultNode${this.state.hoveredIndex}`].scrollIntoView(
               scrollParams
             );
@@ -100,6 +102,8 @@ export default class Lens extends Component {
           },
           () => {
             if (this.state.hoveredIndex >= 0)
+              // Scrolling has been implemented using Refs and scrollIntoView 
+              // javascript nethod, NO LIBRARY OR jQuesry used.
               this[`resultNode${this.state.hoveredIndex}`].scrollIntoView(
                 scrollParams
               );

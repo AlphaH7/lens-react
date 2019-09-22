@@ -6,7 +6,7 @@ build
 node_modules
 
 #aws credentials
-#aws-credentials-dev.json
+aws-credentials-dev.json
 
 #Mac os
 .DS_Store
