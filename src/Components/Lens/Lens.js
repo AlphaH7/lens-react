@@ -28,7 +28,7 @@ export default class Lens extends Component {
     const http = new XMLHttpRequest();
     http.open("GET", "http://www.mocky.io/v2/5ba8efb23100007200c2750c");
     http.send();
-    http.onload = () => this.setState({results: JSON.parse(http.responseText), fetchingData:false});
+    http.onload = () => this.setState({results: JSON.parse(http.responseText), fetchingData:false, hoveredIndex: 0});
   }
 
   handleChange(event){
@@ -71,15 +71,20 @@ export default class Lens extends Component {
         this.setState({hoveredIndex: this.state.hoveredIndex === null ? 0 : this.state.hoveredIndex+1}, ()=>{if(this.state.hoveredIndex >= 0 && this.state.hoveredIndex != null) this[`resultNode${this.state.hoveredIndex}`].scrollIntoView(scrollParams)})
       }else if(event.key === 'ArrowUp' && this.state.hoveredIndex >= 0){
         this.setState({hoveredIndex: this.state.hoveredIndex === 0 ? null : this.state.hoveredIndex-1}, ()=>{if(this.state.hoveredIndex >= 0 && this.state.hoveredIndex != null) this[`resultNode${this.state.hoveredIndex}`].scrollIntoView(scrollParams)})
+      }else if(event.key === 'Enter' && this.state.hoveredIndex >= 0 && this.state.hoveredIndex != null){
+        console.log(this.state.results , this.state.results[this.state.hoveredIndex], this.state.hoveredIndex);
+        this.props.onOptionSelect(this.returnFileredResults()[this.state.hoveredIndex]);
       }
     }
   }
 
-  setHoveredItem(index) {
+  setHoveredItem(index, data) {
+    console.log(this.state.results , this.state.results[this.state.hoveredIndex], this.state.hoveredIndex)
     this.setState({hoveredIndex: index});
   }
 
   render() {
+    console.log(this.returnFileredResults());
     return (
       <div className={`lens-ctr ${this.state.fetchingData ? 'animate' : ''}`} >
         <input onChange={this.handleChange} ref={this.lensRef} onKeyDown={this.onKeyPressed} className="lens-input" placeholder="Search users by ID, name or address" autoFocus/>
@@ -97,14 +102,14 @@ export default class Lens extends Component {
             : (<div className="result-ctr" key={this.state.reults}>
                 {this.returnFileredResults().map(
                   (data, i) => (
-                    <div ref={element => this[`resultNode${i}`] = element} className={`result-node ${i == this.state.hoveredIndex ? 'hovered' : ''}`} onMouseEnter={this.setHoveredItem.bind(this,i)} key={data.id}>
+                    <div ref={element => this[`resultNode${i}`] = element} className={`result-node ${i == this.state.hoveredIndex ? 'hovered' : ''}`} onClick={this.props.onOptionSelect.bind(null, this.returnFileredResults()[this.state.hoveredIndex])} onMouseEnter={this.setHoveredItem.bind(this,i, data)} key={data.id}>
                       {
                         Object.keys(data).map(
                           key => (
                             typeof data[key] !== 'object'
                             ? (key == 'id' || key == 'name' || data[key].toLowerCase().includes(this.state.inputString.toLowerCase())) ? <div key={`result-node-${data.id}-${key}`} className={`info-node ${key}`}>{this.renderHighlightedField(data[key])}</div> : null
                             : (<div className="info-node items" key={`${key} ${data[key].id}`}>
-                                {data[key].filter(str => str.toLowerCase().includes(this.state.inputString.toLowerCase())).length === 0 ? null : <div>{[<span>{data[key].filter(str => str.toLowerCase().includes(this.state.inputString.toLowerCase())).join(' ,')}</span>, <div key={`sulbine-${key}-${data[key].id}`} className="items-subline">{`found in items`}</div>]}</div>}
+                                {data[key].filter(str => str.toLowerCase().includes(this.state.inputString.toLowerCase())).length === 0 ? null : <li>{[<span>{data[key].filter(str => str.toLowerCase().includes(this.state.inputString.toLowerCase())).join(' ,')}</span>, <div key={`sulbine-${key}-${data[key].id}`} className="items-subline">{`found in items`}</div>]}</li>}
                               </div>)
                           )
                         )
@@ -122,6 +127,5 @@ export default class Lens extends Component {
 }
 
 Lens.defaultProps = {
-  onChange: null,
   onOptionSelect: null
 };
