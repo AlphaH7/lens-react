@@ -1,5 +1,7 @@
 # Lens React
-  A descriptive interactive react search plugin demo.
+  An Ineractive search dropdown for react.
+
+  <a href="http://lens-react.s3-website.ap-south-1.amazonaws.com/" target="_blank">Demo</a>
 
 # Install Dependencies
   ```

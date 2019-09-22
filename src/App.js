@@ -5,6 +5,9 @@ import Lens from './Components/Lens/Lens';
 export default class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selectedEntry: null
+    }
   }
 
   componentDidMount() {
@@ -16,10 +19,27 @@ export default class App extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <React.Fragment>
         <div className="app-container animated-bg">
-          <Lens/>
+          <h1> {'Lens'} </h1>
+          <h2> {'An Ineractive search dropdown for react.'} </h2>
+          {
+            this.state.selectedEntry === null
+              ? (<div className="search-ctr">
+                <Lens onOptionSelect={(value)=>{console.log(value);this.setState({selectedEntry: value})}}/>
+              </div>) : (
+                <div className="details-card">
+                  <div className="close-icon" onClick={()=>this.setState({selectedEntry: null})}>{'x'}</div>
+                  <div className="id"><span>{'#'}</span><div>{this.state.selectedEntry.id}</div></div>
+                  <div><span>{'Name -'}</span>{this.state.selectedEntry.name}</div>
+                  <div><span>{'Items -'}</span>{this.state.selectedEntry.items.join(', ')}</div>
+                  <div><span>{'Address -'}</span>{this.state.selectedEntry.address}</div>
+                  <div><span>{'PIN -'}</span>{this.state.selectedEntry.pin}</div>
+                </div>
+              )
+          }
         </div>
       </React.Fragment>
     );
