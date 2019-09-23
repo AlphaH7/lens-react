@@ -7,7 +7,6 @@ node_modules
 
 #aws credentials
 aws-credentials-dev.json
-aws-credentials-prod.json
 
 #Mac os
 .DS_Store
