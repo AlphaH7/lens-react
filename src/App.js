@@ -22,24 +22,47 @@ export default class App extends Component {
     console.log(this.state);
     return (
       <React.Fragment>
-        <div className="app-container animated-bg">
-          <h1> {'Lens'} </h1>
-          <h2> {'An Ineractive search dropdown for react.'} </h2>
-          {
-            this.state.selectedEntry === null
-              ? (<div className="search-ctr">
-                <Lens onOptionSelect={(value)=>{console.log(value);this.setState({selectedEntry: value})}}/>
-              </div>) : (
-                <div className="details-card">
-                  <div className="close-icon" onClick={()=>this.setState({selectedEntry: null})}>{'x'}</div>
-                  <div className="id"><span>{'#'}</span><div>{this.state.selectedEntry.id}</div></div>
-                  <div><span>{'Name -'}</span>{this.state.selectedEntry.name}</div>
-                  <div><span>{'Items -'}</span>{this.state.selectedEntry.items.join(', ')}</div>
-                  <div><span>{'Address -'}</span>{this.state.selectedEntry.address}</div>
-                  <div><span>{'PIN -'}</span>{this.state.selectedEntry.pin}</div>
-                </div>
-              )
-          }
+        <div className="app-container gradient-bg">
+          <h1> {"Lens"} </h1>
+          <h2> {"An Interactive search dropdown for react."} </h2>
+          {this.state.selectedEntry === null ? (
+            <div className="search-ctr">
+              <Lens
+                onOptionSelect={value => {
+                  this.setState({ selectedEntry: value });
+                }}
+              />
+            </div>
+          ) : (
+            <div className="details-card">
+              <div
+                className="close-icon"
+                onClick={() => this.setState({ selectedEntry: null })}
+              >
+                {"x"}
+              </div>
+              <div className="id">
+                <span>{"#"}</span>
+                <div>{this.state.selectedEntry.id}</div>
+              </div>
+              <div>
+                <span>{"Name -"}</span>
+                {this.state.selectedEntry.name}
+              </div>
+              <div>
+                <span>{"Items -"}</span>
+                {this.state.selectedEntry.items.join(", ")}
+              </div>
+              <div>
+                <span>{"Address -"}</span>
+                {this.state.selectedEntry.address}
+              </div>
+              <div>
+                <span>{"PIN -"}</span>
+                {this.state.selectedEntry.pincode}
+              </div>
+            </div>
+          )}
         </div>
       </React.Fragment>
     );

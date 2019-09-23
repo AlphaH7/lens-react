@@ -1,5 +1,5 @@
 # Lens React
-  An Ineractive search dropdown for react.
+  An Interactive search dropdown for react.
 
   <a href="http://lens-react.s3-website.ap-south-1.amazonaws.com/" target="_blank">Demo</a>
 
